@@ -31,7 +31,7 @@ namespace WebAppUndertheHood.Pages.Account
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
                 // Serialize the claims principal into string then encrypt that string and save that as a cookie
-                await HttpContext.SignInAsync("MyCookieAuth", principal);
+                await HttpContext.SignInAsync("MyCookieAuth", principal); // Request Encapsulated into HttpContext
                 return RedirectToPage("/Index");
             }
             return Page();

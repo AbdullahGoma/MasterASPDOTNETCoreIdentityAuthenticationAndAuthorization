@@ -26,7 +26,22 @@ namespace WebApp_UnderTheHood
             services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", options =>
             {
                 options.Cookie.Name = "MyCookieAuth";
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
             });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("MustBelongToHRDepartment", 
+                    policy => policy.RequireClaim("Department", "HR"));
+
+                options.AddPolicy("AdminOnly",
+                    policy => policy.RequireClaim("admin"));
+
+                options.AddPolicy("HRManagerOnly",
+                    policy => policy.RequireClaim("Department", "HR").RequireClaim("Manager"));
+            });
+
             services.AddRazorPages();
         }
 

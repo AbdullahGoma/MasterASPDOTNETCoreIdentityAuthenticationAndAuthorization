@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppUndertheHood.Authorization;
 
 namespace WebApp_UnderTheHood
 {
@@ -39,8 +41,13 @@ namespace WebApp_UnderTheHood
                     policy => policy.RequireClaim("admin"));
 
                 options.AddPolicy("HRManagerOnly",
-                    policy => policy.RequireClaim("Department", "HR").RequireClaim("Manager"));
+                    policy => policy.RequireClaim("Department", "HR")
+                    .RequireClaim("Manager")
+                    .Requirements.Add(new HRManagerProbationRequirement(3))
+                    );
             });
+
+            services.AddSingleton<IAuthorizationHandler, HRManagerProbationRequirementHandler>();
 
             services.AddRazorPages();
         }

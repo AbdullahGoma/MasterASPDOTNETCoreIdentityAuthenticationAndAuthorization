@@ -20,3 +20,5 @@ ex: Identity(driver license) => ClaimName, ClaimBirthdate, ClaimHeight
 
 - claims provide information about a user, and roles define the user's access or permissions within a system. 
 Roles are a specific type of claim, but claims can encompass a broader range of user-related information.
+
+- Closing Browser => Killing the cookie

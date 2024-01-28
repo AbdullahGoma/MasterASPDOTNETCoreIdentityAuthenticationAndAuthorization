@@ -16,3 +16,5 @@ One identity can contains many claims
 
 ex: Identity(driver license) => ClaimName, ClaimBirthdate, ClaimHeight
 
+Authorization looks at claims from the user and look at the page if the user have policy(requirements)
+

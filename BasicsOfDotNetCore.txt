@@ -1,0 +1,18 @@
+Asp.net core is a platform for creating web applications that includes web API
+
+Web Applications are based on HTTP Request
+
+Middleware pipline => Functions(Authint. & Authori., Exception Handling, Logins, ...) Process messages(Http Request) that come to server (Sequentional)
+
+Filters => Another piplines that recording the diffs requests 
+
+Security Context => Contains all the informations(username, emailAddresses, ..) that users have for security purpose
+
+claims principle(Contains one or more identity of the user) => object represent security context of the user 
+
+One person can have many types of identities 
+
+One identity can contains many claims 
+
+ex: Identity(driver license) => ClaimName, ClaimBirthdate, ClaimHeight
+

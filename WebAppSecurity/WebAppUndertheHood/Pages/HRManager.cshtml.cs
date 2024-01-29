@@ -11,7 +11,7 @@ namespace WebAppUndertheHood.Pages
         private readonly IHttpClientFactory httpClientFactory;
 
         [BindProperty]
-        public List<WeatherForecastDTO> whateverForecastItems { get; set; } = new List<WeatherForecastDTO>();
+        public List<WeatherForecastDTO> weatherForecastItems { get; set; } = new List<WeatherForecastDTO>();
 
         public HRManagerModel(IHttpClientFactory httpClientFactory)
         {
@@ -22,7 +22,7 @@ namespace WebAppUndertheHood.Pages
         public async Task OnGetAsync()
         {
             var httpClient = httpClientFactory.CreateClient("OurWebAPI");
-            whateverForecastItems = await httpClient.GetFromJsonAsync<List<WeatherForecastDTO>>("WeatherForecast") ?? 
+            weatherForecastItems = await httpClient.GetFromJsonAsync<List<WeatherForecastDTO>>("WeatherForecast") ?? 
                                                                                                 new List<WeatherForecastDTO>();          
         }
     }

@@ -48,6 +48,11 @@ namespace WebApp_UnderTheHood
                     );
             });
 
+
+            // HandleRequirementAsync: This method is called by the ASP.NET Core framework
+            // to execute your custom authorization logic. If the condition inside the method is true,
+            // the authorization requirement is considered satisfied (context.Succeed(requirement)),
+            // and access is granted.
             services.AddSingleton<IAuthorizationHandler, HRManagerProbationRequirementHandler>();
 
             services.AddRazorPages();

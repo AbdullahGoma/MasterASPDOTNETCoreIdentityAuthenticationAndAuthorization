@@ -4,4 +4,11 @@
 }
 <div>
     <h1>HR Manager</h1>
+    <br />
+    <ul>
+        @foreach (var item in Model.whateverForecastItems)
+        {
+            <li>@item.Date.ToLongDateString() - @item.Summary</li>
+        }
+    </ul>
 </div>

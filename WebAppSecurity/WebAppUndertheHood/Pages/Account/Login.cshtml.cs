@@ -29,7 +29,7 @@ namespace WebAppUndertheHood.Pages.Account
                     new Claim("Department", "HR"),
                     new Claim("admin", "true"),
                     new Claim("Manager", "true"),
-                    new Claim("EmploymentDate", "2024-01-01")
+                    new Claim("EmploymentDate", "2023-9-01")
                 };
                 var identity = new ClaimsIdentity(claims,"MyCookieAuth");
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);

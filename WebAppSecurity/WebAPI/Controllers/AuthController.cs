@@ -52,14 +52,14 @@ namespace WebAPI.Controllers
 
         private string CreateToken(IEnumerable<Claim> claims, DateTime expireAt)
         {
-            var SecreKey = Encoding.ASCII.GetBytes(confeguration.GetValue<string>("SecreKey")?? "");
+            var SecretKey = Encoding.ASCII.GetBytes(confeguration.GetValue<string>("SecretKey")?? "");
 
             // generate the Jason Web Token 'JWT'
             var jwt = new JwtSecurityToken(
                     claims: claims,
                     notBefore: DateTime.UtcNow,
                     expires: expireAt,
-                    signingCredentials: new SigningCredentials(new SymmetricSecurityKey(SecreKey), SecurityAlgorithms.HmacSha256Signature)
+                    signingCredentials: new SigningCredentials(new SymmetricSecurityKey(SecretKey), SecurityAlgorithms.HmacSha256Signature)
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(jwt);

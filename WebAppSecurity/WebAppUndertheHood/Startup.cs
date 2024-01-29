@@ -55,6 +55,11 @@ namespace WebApp_UnderTheHood
             // and access is granted. and the specifice part who call this method is Authorization middleware
             services.AddSingleton<IAuthorizationHandler, HRManagerProbationRequirementHandler>();
 
+            services.AddHttpClient("OurWebAPI", client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:7177/");
+            });
+
             services.AddRazorPages();
         }
 

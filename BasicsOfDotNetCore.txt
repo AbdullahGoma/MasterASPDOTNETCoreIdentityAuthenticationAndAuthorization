@@ -22,3 +22,20 @@ ex: Identity(driver license) => ClaimName, ClaimBirthdate, ClaimHeight
 Roles are a specific type of claim, but claims can encompass a broader range of user-related information.
 
 - Closing Browser => Killing the cookie
+
+- HandleRequirementAsync Function(Who Call this method?) => When we inject HRManagerProbationRequirementHandler(Implement IAuthorizationHandler)
+and when we run the program and the HttpRequest go to the Authorization Middleware(In this middleware we add logic that create object from 
+HRManagerProbationRequirement), this middleware will call this method in runtime by Asp.Net Core Framework If the condition inside method is true
+the authorization requirement is conidered satisfied(Context.succeed(requirement)) and access is granted.
+
+- method<AnyThing>() => AnyThing is (To specify the return type).
+
+- The Essential Parts in Asp.Net Core Identity (UI, Functionalities, Data Store).
+
+- Token is a string(Hashing Algo, Claims, Hashed Claims), Then Don't put any sensetive information in Claims.
+
+
+
+
+
+

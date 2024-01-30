@@ -60,6 +60,13 @@ namespace WebApp_UnderTheHood
                 client.BaseAddress = new Uri("https://localhost:7177/");
             });
 
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.IdleTimeout = TimeSpan.FromSeconds(20);
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddRazorPages();
         }
 
@@ -85,6 +92,8 @@ namespace WebApp_UnderTheHood
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseSession(); // To Configure AddSession
 
             app.UseEndpoints(endpoints =>
             {

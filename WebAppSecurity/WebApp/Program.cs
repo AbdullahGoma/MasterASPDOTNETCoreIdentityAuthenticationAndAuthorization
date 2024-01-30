@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebApp.Data;
+
 namespace WebApp
 {
     public class Program
@@ -5,9 +8,15 @@ namespace WebApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var conStr = builder.Configuration.GetConnectionString("ConStr");
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(conStr);
+            });
 
             var app = builder.Build();
 

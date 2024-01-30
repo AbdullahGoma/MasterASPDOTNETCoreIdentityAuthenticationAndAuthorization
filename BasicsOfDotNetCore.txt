@@ -34,6 +34,9 @@ the authorization requirement is conidered satisfied(Context.succeed(requirement
 
 - Token is a string(Hashing Algo, Claims, Hashed Claims), Then Don't put any sensetive information in Claims.
 
+- In Asp.Net Core Identity there are two main classes to work with => SignInManager(Verify Credentials, Generate Security Context, Authen, Autho),
+UserManager(Retraive All User Informations). 
+
 
 
 

@@ -40,6 +40,9 @@ UserManager(Retraive All User Informations).
 - User Registration: User Send registration information to identity(Validate user exist or not in DB and then created if not exist), then identity 
 send email, then user verify the email, then identity display the success message. 
 
+- To Send Email => Generate a Token => Store Token in Data Store => Send Token To User => When User Open the email and click on the link =>
+Will back to website => verify the token against token that stored in the data store => Display success message
+
 
 
 

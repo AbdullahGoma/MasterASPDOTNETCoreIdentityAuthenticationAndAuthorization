@@ -29,7 +29,8 @@ namespace WebApp
                 options.User.RequireUniqueEmail = true;
                 options.SignIn.RequireConfirmedPhoneNumber = true; // By Default is False
             })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             builder.Services.ConfigureApplicationCookie(options =>
             {

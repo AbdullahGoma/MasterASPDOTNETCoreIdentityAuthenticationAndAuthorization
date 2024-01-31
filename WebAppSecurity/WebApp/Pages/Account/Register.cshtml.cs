@@ -33,7 +33,12 @@ namespace WebApp.Pages
             };
             var result = await this.userManager.CreateAsync(user, RegisterViewModel.Password);
             if (result.Succeeded)
-                return RedirectToPage("/Account/Login");
+            {
+                // Generate the token
+                var confirmationToken = await this.userManager.GenerateEmailConfirmationTokenAsync(user); // User Id will generated after var result
+                return Redirect(Url.PageLink(pageName: "/Account/ConfirmEmail", 
+                                               values: new { userId = user.Id, token = confirmationToken })?? "");
+            }
             else
             {
                 foreach (var error in result.Errors)

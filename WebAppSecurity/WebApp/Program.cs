@@ -27,7 +27,7 @@ namespace WebApp
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.User.RequireUniqueEmail = true;
-                options.SignIn.RequireConfirmedPhoneNumber = true; // By Default is False
+                options.SignIn.RequireConfirmedEmail = true; // By Default is False
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();

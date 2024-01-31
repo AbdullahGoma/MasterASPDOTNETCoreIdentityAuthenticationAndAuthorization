@@ -25,8 +25,11 @@ namespace WebApp.Pages.Account
         {
             if(!ModelState.IsValid) return Page();
 
-            var result = await signInManager.PasswordSignInAsync(this.Credential.Email, 
-                              this.Credential.Password, this.Credential.RememberMe, false);
+            var result = await signInManager.PasswordSignInAsync(
+                              this.Credential.Email, 
+                              this.Credential.Password, 
+                              this.Credential.RememberMe, 
+                              false);
 
             if(result.Succeeded)
                 return RedirectToPage("/Index");

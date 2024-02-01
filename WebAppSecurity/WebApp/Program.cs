@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Data;
+using WebApp.Services;
+using WebApp.Settings;
 
 namespace WebApp
 {
@@ -37,6 +39,9 @@ namespace WebApp
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/AccessDenied";
             });
+
+            builder.Services.Configure<STMPSetting>(builder.Configuration.GetSection("SMTP"));
+            builder.Services.AddSingleton<IEmailService, EmailService>();   
 
             var app = builder.Build();
 

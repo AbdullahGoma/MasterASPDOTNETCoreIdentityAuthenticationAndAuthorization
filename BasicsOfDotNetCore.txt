@@ -49,4 +49,13 @@ Will back to website => verify the token against token that stored in the data s
 cmd: dotnet user-secrets init
 dotnet user-secrets set "STMPSetting:Password" "pass"
 
+- Roles vs Claims: If requirement does not require complecated logic to give permissions to users to access resources => use rules
+If requirement does not require complecated logic => Claims => more flexible
+
+
+
+
+
+
+
 

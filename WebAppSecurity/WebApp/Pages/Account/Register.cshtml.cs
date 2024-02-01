@@ -4,16 +4,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Mail;
+using WebApp.Data.Account;
 using WebApp.Services;
 
 namespace WebApp.Pages
 {
     public class RegisterModel : PageModel
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<User> userManager;
         private readonly IEmailService emailService;
 
-        public RegisterModel(UserManager<IdentityUser> userManager, IEmailService emailService)
+        public RegisterModel(UserManager<User> userManager, IEmailService emailService)
         {
             this.userManager = userManager;
             this.emailService = emailService;
@@ -31,23 +32,34 @@ namespace WebApp.Pages
             // Validate Email Address(optional)
 
             // Create the user 
-            var user = new IdentityUser
+            var user = new User
             {
                 Email = RegisterViewModel.Email,
                 UserName = RegisterViewModel.Email,
+                Department = RegisterViewModel.Department,
+                Position = RegisterViewModel.Position,
             };
             var result = await this.userManager.CreateAsync(user, RegisterViewModel.Password);
             if (result.Succeeded)
             {
                 // Generate the token
                 var confirmationToken = await this.userManager.GenerateEmailConfirmationTokenAsync(user); // User Id will generated after var result
-                var ConfirmationLink = Url.PageLink(pageName: "/Account/ConfirmEmail",
-                                               values: new { userId = user.Id, token = confirmationToken });
 
-                await emailService.SendAsync("abdullah.goma.010170@gmail.com", user.Email, "Please Confirm Your Email"
-                    , $"Please click on this link to confirm your email: {ConfirmationLink}");
+                // We will Comment this -------------------------
+                return Redirect(Url.PageLink(pageName: "/Account/ConfirmEmail",
+                                               values: new { userId = user.Id, token = confirmationToken })?? "");
 
-                return RedirectToPage("/Account/Login");
+                //-----------------------------------------------
+                // We will UnComment this -----------------------
+                // To Send Email To New Users
+                //-----------------------------------------------
+                //var ConfirmationLink = Url.PageLink(pageName: "/Account/ConfirmEmail",
+                //                               values: new { userId = user.Id, token = confirmationToken });
+
+                //await emailService.SendAsync("abdullah.goma.010170@gmail.com", user.Email, "Please Confirm Your Email"
+                //    , $"Please click on this link to confirm your email: {ConfirmationLink}");
+
+                //return RedirectToPage("/Account/Login");
             }
             else
             {
@@ -70,7 +82,7 @@ namespace WebApp.Pages
         //        // Validate Email Address (optional)
 
         //        // Create the user
-        //        var user = new IdentityUser
+        //        var user = new User
         //        {
         //            Email = RegisterViewModel.Email,
         //            UserName = RegisterViewModel.Email,
@@ -124,8 +136,8 @@ namespace WebApp.Pages
         //            }
         //        }
         //    }
-        }
-        public class RegisterViewModel
+    }
+    public class RegisterViewModel
     {
         [Required]
         [EmailAddress(ErrorMessage = "Invalid Email Address.")]
@@ -133,6 +145,10 @@ namespace WebApp.Pages
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
+        [Required]
+        public string Department { get; set; } = string.Empty;
+        [Required]
+        public string Position { get; set; } = string.Empty;
 
     }
 }

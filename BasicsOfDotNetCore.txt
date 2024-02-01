@@ -43,7 +43,7 @@ send email, then user verify the email, then identity display the success messag
 - To Send Email => Generate a Token => Store Token in Data Store => Send Token To User => When User Open the email and click on the link =>
 Will back to website => verify the token against token that stored in the data store => Display success message
 
-
+- Run with iis, https://myaccount.google.com/u/0/apppasswords
 
 
 

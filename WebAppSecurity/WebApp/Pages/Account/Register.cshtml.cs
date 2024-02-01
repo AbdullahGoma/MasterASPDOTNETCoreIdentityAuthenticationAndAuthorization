@@ -22,7 +22,7 @@ namespace WebApp.Pages
         }
 
         [BindProperty]
-        public RegisterViewModel RegisterViewModel { get; set; } = new RegisterViewModel();
+        public UserProfile UserProfile { get; set; } = new UserProfile();
         public void OnGet()
         {
         }
@@ -34,23 +34,23 @@ namespace WebApp.Pages
 
             //var user = new User
             //{
-            //    Email = RegisterViewModel.Email,
-            //    UserName = RegisterViewModel.Email,
-            //    Department = RegisterViewModel.Department,
-            //    Position = RegisterViewModel.Position,
+            //    Email = UserProfile.Email,
+            //    UserName = UserProfile.Email,
+            //    Department = UserProfile.Department,
+            //    Position = UserProfile.Position,
             //};
 
             // Create the user 
             var user = new User
             {
-                Email = RegisterViewModel.Email,
-                UserName = RegisterViewModel.Email,
+                Email = UserProfile.Email,
+                UserName = UserProfile.Email,
             };
 
-            var claimDepartment = new Claim("Department", RegisterViewModel.Department);
-            var claimPosition = new Claim("Position", RegisterViewModel.Position);
+            var claimDepartment = new Claim("Department", UserProfile.Department);
+            var claimPosition = new Claim("Position", UserProfile.Position);
 
-            var result = await this.userManager.CreateAsync(user, RegisterViewModel.Password);
+            var result = await this.userManager.CreateAsync(user, UserProfile.Password);
             if (result.Succeeded)
             {
                 await this.userManager.AddClaimAsync(user, claimDepartment);
@@ -98,11 +98,11 @@ namespace WebApp.Pages
         //        // Create the user
         //        var user = new User
         //        {
-        //            Email = RegisterViewModel.Email,
-        //            UserName = RegisterViewModel.Email,
+        //            Email = UserProfile.Email,
+        //            UserName = UserProfile.Email,
         //        };
 
-        //        var result = await this.userManager.CreateAsync(user, RegisterViewModel.Password);
+        //        var result = await this.userManager.CreateAsync(user, UserProfile.Password);
 
         //        if (result.Succeeded)
         //        {
@@ -151,7 +151,7 @@ namespace WebApp.Pages
         //        }
         //    }
     }
-    public class RegisterViewModel
+    public class UserProfile
     {
         [Required]
         [EmailAddress(ErrorMessage = "Invalid Email Address.")]

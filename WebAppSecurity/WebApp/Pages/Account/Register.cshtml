@@ -12,41 +12,41 @@
 
         <div class="mb-3 row">
             <div class="col-2">
-                <label asp-for="RegisterViewModel.Email"></label>
+                <label asp-for="UserProfile.Email"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="RegisterViewModel.Email" class="form-control" />
+                <input type="text" asp-for="UserProfile.Email" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="RegisterViewModel.Email"></span>
+            <span class="text-danger" asp-validation-for="UserProfile.Email"></span>
         </div>
         <div class="mb-3 row">
             <div class="col-2">
-                <label asp-for="RegisterViewModel.Password"></label>
+                <label asp-for="UserProfile.Password"></label>
             </div>
             <div class="col-5">
-                <input type="password" asp-for="RegisterViewModel.Password" class="form-control" />
+                <input type="password" asp-for="UserProfile.Password" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="RegisterViewModel.Password"></span>
-        </div>
-
-        <div class="mb-3 row">
-            <div class="col-2">
-                <label asp-for="RegisterViewModel.Department"></label>
-            </div>
-            <div class="col-5">
-                <input type="text" asp-for="RegisterViewModel.Department" class="form-control" />
-            </div>
-            <span class="text-danger" asp-validation-for="RegisterViewModel.Department"></span>
+            <span class="text-danger" asp-validation-for="UserProfile.Password"></span>
         </div>
 
         <div class="mb-3 row">
             <div class="col-2">
-                <label asp-for="RegisterViewModel.Position"></label>
+                <label asp-for="UserProfile.Department"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="RegisterViewModel.Position" class="form-control" />
+                <input type="text" asp-for="UserProfile.Department" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="RegisterViewModel.Position"></span>
+            <span class="text-danger" asp-validation-for="UserProfile.Department"></span>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-2">
+                <label asp-for="UserProfile.Position"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="UserProfile.Position" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="UserProfile.Position"></span>
         </div>
 
         <div class="mb-3 row">

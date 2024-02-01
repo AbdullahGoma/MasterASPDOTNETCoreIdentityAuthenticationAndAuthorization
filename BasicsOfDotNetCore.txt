@@ -45,6 +45,8 @@ Will back to website => verify the token against token that stored in the data s
 
 - Run with iis, https://myaccount.google.com/u/0/apppasswords
 
-
+- Store Application Secrets: Add Setting Class, Configure it to Program and add it to secure manager
+cmd: dotnet user-secrets init
+dotnet user-secrets set "STMPSetting:Password" "pass"
 
 

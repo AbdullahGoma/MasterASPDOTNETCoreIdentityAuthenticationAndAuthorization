@@ -40,7 +40,7 @@ namespace WebApp
                 options.AccessDeniedPath = "/AccessDenied";
             });
 
-            builder.Services.Configure<STMPSetting>(builder.Configuration.GetSection("SMTP"));
+            builder.Services.Configure<STMPSetting>(builder.Configuration.GetSection(nameof(STMPSetting)));
             builder.Services.AddSingleton<IEmailService, EmailService>();   
 
             var app = builder.Build();

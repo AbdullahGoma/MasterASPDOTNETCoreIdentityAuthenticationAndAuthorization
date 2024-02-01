@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Claims;
 using WebApp.Data.Account;
 using WebApp.Services;
 
@@ -31,17 +32,30 @@ namespace WebApp.Pages
 
             // Validate Email Address(optional)
 
+            //var user = new User
+            //{
+            //    Email = RegisterViewModel.Email,
+            //    UserName = RegisterViewModel.Email,
+            //    Department = RegisterViewModel.Department,
+            //    Position = RegisterViewModel.Position,
+            //};
+
             // Create the user 
             var user = new User
             {
                 Email = RegisterViewModel.Email,
                 UserName = RegisterViewModel.Email,
-                Department = RegisterViewModel.Department,
-                Position = RegisterViewModel.Position,
             };
+
+            var claimDepartment = new Claim("Department", RegisterViewModel.Department);
+            var claimPosition = new Claim("Position", RegisterViewModel.Position);
+
             var result = await this.userManager.CreateAsync(user, RegisterViewModel.Password);
             if (result.Succeeded)
             {
+                await this.userManager.AddClaimAsync(user, claimDepartment);
+                await this.userManager.AddClaimAsync(user, claimPosition);
+
                 // Generate the token
                 var confirmationToken = await this.userManager.GenerateEmailConfirmationTokenAsync(user); // User Id will generated after var result
 

@@ -6,8 +6,12 @@
 
 <h3>Step 1:</h3>
 <p>
-    Please Enter the Key to your authenticator app:
+    Please scan the QR code or enter the key to your authenticator app:
 </p>
+<p>
+    <img src="@string.Format("data:image/png;base46,{0}", Convert.ToBase64String(Model.QRCodeBytes))" width="300" height="300" />
+</p>
+<br />
 <p>
     @Model.ViewModel.Key
 </p>

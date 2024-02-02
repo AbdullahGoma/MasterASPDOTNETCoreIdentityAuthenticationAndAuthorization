@@ -74,7 +74,7 @@ namespace WebApp.Pages.Account
     {
         [Required]
         [Display(Name = "Security Code")]
-        public string SecurityCode { get; set; } = String.Empty;
+        public string SecurityCode { get; set; } = string.Empty;
         public bool RememberMe { get; set; } 
     }
 

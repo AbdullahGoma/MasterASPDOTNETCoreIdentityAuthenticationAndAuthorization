@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
 using WebApp.Data.Account;
 using WebApp.Services;
+using WebApp.Settings;
 
 namespace WebApp.Pages
 {
@@ -15,7 +17,7 @@ namespace WebApp.Pages
         private readonly UserManager<User> userManager;
         private readonly IEmailService emailService;
 
-        public RegisterModel(UserManager<User> userManager, IEmailService emailService)
+        public RegisterModel(UserManager<User> userManager, IEmailService emailService, IOptions<STMPSetting> smtpSetting)
         {
             this.userManager = userManager;
             this.emailService = emailService;
@@ -70,7 +72,7 @@ namespace WebApp.Pages
                 //var ConfirmationLink = Url.PageLink(pageName: "/Account/ConfirmEmail",
                 //                               values: new { userId = user.Id, token = confirmationToken });
 
-                //await emailService.SendAsync("abdullah.goma.010170@gmail.com", user.Email, "Please Confirm Your Email"
+                //await emailService.SendAsync(smtpSetting.Value.User, user.Email, "Please Confirm Your Email"
                 //    , $"Please click on this link to confirm your email: {ConfirmationLink}");
 
                 //return RedirectToPage("/Account/Login");

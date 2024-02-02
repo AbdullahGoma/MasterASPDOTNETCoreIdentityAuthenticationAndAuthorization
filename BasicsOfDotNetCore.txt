@@ -52,7 +52,9 @@ dotnet user-secrets set "STMPSetting:Password" "pass"
 - Roles vs Claims: If requirement does not require complecated logic to give permissions to users to access resources => use rules
 If requirement does not require complecated logic => Claims => more flexible
 
+- MFA: Multi Factor Authentication 
 
+- 
 
 
 

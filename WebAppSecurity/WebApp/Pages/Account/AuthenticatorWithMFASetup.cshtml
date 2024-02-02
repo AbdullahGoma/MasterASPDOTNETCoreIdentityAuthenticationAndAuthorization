@@ -9,7 +9,12 @@
     Please scan the QR code or enter the key to your authenticator app:
 </p>
 <p>
-    <img src="@string.Format("data:image/png;base46,{0}", Convert.ToBase64String(Model.QRCodeBytes))" width="300" height="300" />
+    @if(Model.ViewModel.QRCodeBytes != null)
+    {
+        <img src="@string.Format("data:image/png;base64,{0}",
+                    Convert.ToBase64String(Model.ViewModel.QRCodeBytes))" width="300" height="300" />
+    }
+    
 </p>
 <br />
 <p>
@@ -44,6 +49,7 @@
         </div>
         <div class="col-5">
             <input type="hidden" asp-for="ViewModel.Key" />
+            <input type="hidden" asp-for="ViewModel.QRCodeBytes" />
         </div>
     </div>
 </form>

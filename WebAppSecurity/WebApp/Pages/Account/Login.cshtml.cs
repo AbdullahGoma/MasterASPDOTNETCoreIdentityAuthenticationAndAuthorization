@@ -36,10 +36,13 @@ namespace WebApp.Pages.Account
                 return RedirectToPage("/Index");
             else
             {
-                if (result.RequiresTwoFactor) return RedirectToPage("/Account/LoginTwoFactor", 
-                    new { Email = this.Credential.Email,
-                          RememberMe = this.Credential.RememberMe
-                    });
+                //if (result.RequiresTwoFactor) return RedirectToPage("/Account/LoginTwoFactor", 
+                //    new { Email = this.Credential.Email,
+                //          RememberMe = this.Credential.RememberMe
+                //    }); // as parameters in get method
+                    
+                if (result.RequiresTwoFactor) return RedirectToPage("/Account/LoginTwoFactorWithAuthenticator", 
+                    new { this.Credential.RememberMe }); // as parameters in get method
                 if (result.IsLockedOut) ModelState.AddModelError("Login", "You are Locked Out.");
                 else ModelState.AddModelError("Login", "Failed To Login");
                 return Page();

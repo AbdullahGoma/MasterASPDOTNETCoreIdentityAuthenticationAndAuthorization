@@ -61,7 +61,9 @@ Infos of User will store in WebApp as Claims.
 
 - Credentails of User Comes from facebook 
 
-
+- When a user logs in with an external website like Facebook, your website typically does not store the user's sensitive information, 
+such as their username and password. Instead, your website receives an authentication token or some form of identifier that allows it to 
+verify the user's identity with the external authentication provider (in this case, Facebook).
 
 
 

@@ -1,7 +1,7 @@
 ﻿@if(User.Identity.IsAuthenticated)
 {
     <form method="post" class="form-inline navbar-brand" asp-page="/Account/Logout">
-        Welcome @User?.Identity.Name (@User?.Claims.First(x => x.Type == "Position"))
+        Welcome @User?.Identity.Name (@User?.Claims.FirstOrDefault(x => x.Type == "Position"))
         <button type="submit" class="ml-2 btn navbar-brand">Logout</button>
     </form>
 }

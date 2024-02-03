@@ -59,7 +59,7 @@ user to (social media account) if user loged to it(social accs) => Social media 
 User will redirect back to WebApp => This redirection includes alot of infos => then WebApp will Login to user and user will able to access WebApp
 Infos of User will store in WebApp as Claims.
 
--  
+- Credentails of User Comes from facebook 
 
 
 

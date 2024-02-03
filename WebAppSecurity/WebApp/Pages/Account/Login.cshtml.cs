@@ -18,8 +18,13 @@ namespace WebApp.Pages.Account
         }
         [BindProperty]
         public CredentialVeiwModel Credential { get; set; } = new CredentialVeiwModel();
-        public void OnGet()
+
+        [BindProperty]
+        public IEnumerable<AuthenticationScheme> ExternalLoginProviders { get; set; }
+        public async Task OnGetAsync()
         {
+            // signInManager knows we have external provider because we have configured it in Program.cs
+            this.ExternalLoginProviders = await signInManager.GetExternalAuthenticationSchemesAsync(); 
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -48,6 +53,14 @@ namespace WebApp.Pages.Account
                 return Page();
             }
 
+        }
+
+        // provider look for attribute name in button
+        public IActionResult OnPostLoginExternally(string provider)
+        {
+            var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, null); // contains Informations
+            properties.RedirectUri = Url.Action("", "");
+            return Challenge(properties, provider);
         }
     }
 

@@ -44,8 +44,17 @@ namespace WebApp
                 options.AccessDeniedPath = "/AccessDenied";
             });
 
+            // Settings
             builder.Services.Configure<STMPSetting>(builder.Configuration.GetSection(nameof(STMPSetting)));
-            builder.Services.AddSingleton<IEmailService, EmailService>();   
+            builder.Services.Configure<FacebookSetting>(builder.Configuration.GetSection(nameof(FacebookSetting)));
+
+            builder.Services.AddSingleton<IEmailService, EmailService>();
+
+            builder.Services.AddAuthentication().AddFacebook(options =>
+            {
+                options.AppId = builder.Configuration["FacebookSettingAppId"] ?? string.Empty;
+                options.AppSecret = builder.Configuration["FacebookSettingAppSecret"] ?? string.Empty;
+            });
 
             var app = builder.Build();
 

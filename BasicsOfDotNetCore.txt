@@ -54,7 +54,12 @@ If requirement does not require complecated logic => Claims => more flexible
 
 - MFA: Multi Factor Authentication 
 
-- 
+- Login With Social Media Accounts(OAuth): The User Try To Login To Our WebApp and have options to login (by social media accounts) => redirect 
+user to (social media account) if user loged to it(social accs) => Social media will ask user to share info with WebApp For Login Purpose => 
+User will redirect back to WebApp => This redirection includes alot of infos => then WebApp will Login to user and user will able to access WebApp
+Infos of User will store in WebApp as Claims.
+
+-  
 
 
 
